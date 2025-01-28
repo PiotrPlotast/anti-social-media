@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Anti Social Media",
+  "version": "1.0",
+  "description": "This Chrome extension gets you unplugged from all social medias!",
+  "permissions": ["declarativeNetRequest", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "block_js",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "icons": {},
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.instagram.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
